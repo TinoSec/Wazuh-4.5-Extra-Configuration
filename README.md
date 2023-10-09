@@ -408,7 +408,6 @@ sudo systemctl restart wazuh-manager
 ```
 
 If you get an error after this command, check the ossec.conf file in this repository as a configuration guide, feel free to use it
-https://github.com/TinoSec/WazuhConfiguration/blob/main/ossec.conf
-
+[ossec.conf](https://github.com/TinoSec/WazuhConfiguration/blob/main/ossec.conf)
 
 
