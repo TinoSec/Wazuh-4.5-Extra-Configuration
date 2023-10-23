@@ -1,6 +1,45 @@
 # WazuhConfiguration
-This guide will help you in the Wazuh configuration, such as vulnerability detection, osquery and integrations
+This guide will help you in the Wazuh configuration, such as vulnerability detection, osquery, integrations and syslog 
 
+# Configure rsyslog for Fortinet logs
+Install rsyslog 
+
+```bash
+apt install rsyslog
+```
+
+Edit */etc/rsyslog.conf/*, uncomment imudp & imtcp modules
+
+Look at the example
+
+<details>
+  <summary>rsyslog.conf</summary>
+  
+  ```bash
+  {
+#################
+#### MODULES ####
+#################
+
+module(load="imuxsock") # provides support for local system logging
+#module(load="immark")  # provides --MARK-- message capability
+
+# provides UDP syslog reception
+module(load="imudp")
+input(type="imudp" port="514")
+
+# provides TCP syslog reception
+module(load="imtcp")
+input(type="imtcp" port="514")
+
+  }
+```
+</details>
+
+Check the logs
+```bash
+tail -f /var/log/syslog
+```
 
 # Configure Vulnerabilities Scan
 Edit /var/ossec/etc/ossec.conf, chage the value *<enabled>": "no"*, to *"<enabled>":"yes",*
