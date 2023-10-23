@@ -36,6 +36,13 @@ input(type="imtcp" port="514")
 ```
 </details>
 
+Allow ports on ufw
+
+```bash
+sudo ufw allow 514/udp
+sudo ufw allow 514/tcp
+```
+
 Check the logs
 ```bash
 tail -f /var/log/syslog
